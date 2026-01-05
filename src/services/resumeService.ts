@@ -4,7 +4,7 @@ export const analyzeResume = async (
 ) => {
   const base64 = await fileToBase64(file);
 
-  const response = await fetch("/api/analyze", {
+    const response = await fetch("/api/analyze", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,13 @@ export const analyzeResume = async (
     }),
   });
 
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "API error");
+  }
+
   return response.json();
+
 };
 
 const fileToBase64 = (file: File): Promise<string> => {
