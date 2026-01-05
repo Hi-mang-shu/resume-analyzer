@@ -65,8 +65,8 @@ const Home = () => {
         {/* Analyze Button */}
         <button
           onClick={handleAnalyze}
-          disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-lg disabled:opacity-60"
+          disabled={loading || !resumeFile}
+          className="w-full bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? "Analyzing..." : "Analyze Resume"}
         </button>
